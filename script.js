@@ -1,24 +1,24 @@
 const noButton = document.getElementById("no");
 const yesButton = document.getElementById("yes");
-const message = document.getElementById("message");
 const finalImg = document.getElementById("final-img");
-const music = document.getElementById("music");
+const clickSound = document.getElementById("click-sound");
 
-const clickSound = new Audio("assets/click.mp3");
-
-noButton.addEventListener("mouseover", function() {
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
-    noButton.style.position = "absolute";
+function moveNoButton() {
+    const x = Math.random() * (window.innerWidth - noButton.clientWidth);
+    const y = Math.random() * (window.innerHeight - noButton.clientHeight);
     noButton.style.left = `${x}px`;
     noButton.style.top = `${y}px`;
-});
+}
 
-noButton.addEventListener("click", () => clickSound.play());
-yesButton.addEventListener("click", function() {
+setInterval(moveNoButton, 1000); // Se mueve cada segundo
+
+noButton.addEventListener("mouseover", moveNoButton);
+noButton.addEventListener("click", moveNoButton);
+
+yesButton.addEventListener("click", () => {
     clickSound.play();
-    message.classList.remove("hidden");
+    document.querySelector(".buttons").style.display = "none";
+    document.getElementById("pregunta-img").style.display = "none";
+    finalImg.classList.add("animate");
     finalImg.classList.remove("hidden");
-    yesButton.style.display = "none";
-    noButton.style.display = "none";
 });
