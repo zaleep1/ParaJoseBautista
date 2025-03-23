@@ -12,13 +12,53 @@ body {
     margin-top: 50px;
 }
 
+img {
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    font-size: 24px;
+    padding: 15px 40px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+#yes {
+    background-color: green;
+}
+
+#no {
+    background-color: red;
+    position: absolute;
+}
+
+button:active {
+    transform: scale(1.1);
+}
+
 .hidden {
     display: none;
 }
 
-button {
-    font-size: 18px;
-    padding: 10px 20px;
-    margin: 10px;
-    cursor: pointer;
+#final-img {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+#final-img.animate {
+    width: 300px;
+    height: auto;
+    opacity: 1;
 }
